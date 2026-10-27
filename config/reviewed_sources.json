@@ -1,0 +1,130 @@
+{
+  "kpit_documents.json": [
+    {
+      "id": "e9eb08637878bc9ddaed82b85ddca24edfc1a4fe888862febeb454886751b14b",
+      "url": "https://nsearchives.nseindia.com/corporate/KPITTECH_29072026131719_NSE_Results2.pdf",
+      "name": "results 2026-07-29",
+      "kind": "results"
+    },
+    {
+      "id": "c81d30a93bdd35566a57f873e4c218aba77293d847b27b3d3fcc25f59b4de442",
+      "url": "https://nsearchives.nseindia.com/corporate/MeghanaPhadnis_06052026124310_Results_NSE.pdf",
+      "name": "results 2026-05-06",
+      "kind": "results"
+    },
+    {
+      "id": "ffec77e5fbaba583e60e2a5842e1636c4086d3a3c1ec8bca8d19206b4ddd4d96",
+      "url": "https://nsearchives.nseindia.com/corporate/KPITTECH_29012026122701_NSE_Full__File.pdf",
+      "name": "results 2026-01-29",
+      "kind": "results"
+    },
+    {
+      "id": "4adf8acf984e50b48c477a7e56a84801b6ed127ffeaa2cddfb9d433a1853c877",
+      "url": "https://nsearchives.nseindia.com/corporate/KPITTECH_10112025124537_ResultsNSE.pdf",
+      "name": "results 2025-11-10",
+      "kind": "results"
+    },
+    {
+      "id": "1714b9f1dfc0263c2abab381f458d2c665a47259ed57cfe69753821ce2ef0d2d",
+      "url": "https://nsearchives.nseindia.com/corporate/KPITTECH_30072025141454_NSE_Results.pdf",
+      "name": "results 2025-07-30",
+      "kind": "results"
+    },
+    {
+      "id": "503c5f291881a6e4a1d284bf8f8924c59729eecda2c301539e11a66840c0ef1e",
+      "url": "https://nsearchives.nseindia.com/corporate/MeghanaPhadnis_13052026221810_covertranscript_Signed.pdf",
+      "name": "transcript 2026-05-13",
+      "kind": "transcript"
+    },
+    {
+      "id": "edb6720d60d8f1914547b9dec6c9f5b68853faa91d72da82b571c17d6dd50544",
+      "url": "https://nsearchives.nseindia.com/corporate/KPITTECH_06022026223507_CoverTranscript_Signed.pdf",
+      "name": "transcript 2026-02-06",
+      "kind": "transcript"
+    },
+    {
+      "id": "3648542f4168f38406cc942d2b4fcc95427986fe8acd34de302f841f9c69073f",
+      "url": "https://nsearchives.nseindia.com/corporate/KPITTECH_17112025223456_ransacriptNov10_Signed.pdf",
+      "name": "transcript 2025-11-17",
+      "kind": "transcript"
+    },
+    {
+      "id": "969f7cf8885ef84eaa107bb34855cc5373731f1c88a82a67ea705c0aa36dab59",
+      "url": "https://nsearchives.nseindia.com/corporate/KPITTECH_06082025193155_CoverTransacriptJuly30_Signed.pdf",
+      "name": "transcript 2025-08-06",
+      "kind": "transcript"
+    },
+    {
+      "id": "e459d36c2f63bf8260c6a8fafa985fa169196b44c5ebd2293ea3c0d399f0e4c4",
+      "url": "https://nsearchives.nseindia.com/corporate/KPITTECH_29072026133311_Investor_Presentation_June_2026_signed.pdf",
+      "name": "presentation 2026-07-29",
+      "kind": "presentation"
+    },
+    {
+      "id": "56f7712a21484b9d316e548499b101c89040aa17e9331e914efd270045a8d38f",
+      "url": "https://nsearchives.nseindia.com/corporate/MeghanaPhadnis_06052026134642_CovletInvestorPresentationMar26_Signed.pdf",
+      "name": "presentation 2026-05-06",
+      "kind": "presentation"
+    },
+    {
+      "id": "b0d9bc0f5da7e2aec53a2cae9ac48da5b662c12ad4cfbed9930fe9ea2441993f",
+      "url": "https://nsearchives.nseindia.com/corporate/KPITTECH_29012026125458_InvestorUpdate_Signed.pdf",
+      "name": "presentation 2026-01-29",
+      "kind": "presentation"
+    },
+    {
+      "id": "f5fe4b57f8c515637a4ad9959808e2860f65cbf39a5a1fbaa1a619afda10943f",
+      "url": "https://nsearchives.nseindia.com/corporate/KPITTECH_10112025134449_CovletInvestorPresentation_Signed.pdf",
+      "name": "presentation 2025-11-10",
+      "kind": "presentation"
+    },
+    {
+      "id": "1a512ecbfa903b4efc2a1da652ab7d4e36cb96d0c95dc24c9ffbfd13c69707c6",
+      "url": "https://nsearchives.nseindia.com/corporate/KPITTECH_04082026205946_KPIT_Transcript_Cov_let_signed.pdf",
+      "name": "Q1 FY27 transcript",
+      "kind": "transcript"
+    },
+    {
+      "id": "0d4309ab84cb2aa44909e8616fd2cb9f58866222e136fa637128c803de2c86a3",
+      "url": "https://www.kpit.com/wp-content/uploads/2026/08/Annual-Report-for-FY-2025-2026.pdf",
+      "name": "Annual report FY26",
+      "kind": "annual_report"
+    }
+  ],
+  "sona_documents.json": [
+    {
+      "id": "c0a7352a2ebde8011456b249d140abd15aab916e28f64307ee3f531db99420d4",
+      "url": "https://nsearchives.nseindia.com/corporate/SONACOMS_26102026172559_Press_release.pdf",
+      "name": "Press Release",
+      "kind": "results"
+    },
+    {
+      "id": "fd89a8085ac2ddc01ac2dc1ae243131d09a07e5e94432dbcaf5c2f9d003d45bb",
+      "url": "https://nsearchives.nseindia.com/corporate/SONACOMS_26102026170351_All_1.pdf",
+      "name": "Outcome of Board Meeting",
+      "kind": "results"
+    },
+    {
+      "id": "63c2b590372963494180ce0f2e3bd964200e1eae320da56f732699bb91cb764a",
+      "url": "https://nsearchives.nseindia.com/corporate/SONACOMS_26102026162612_IPP.pdf",
+      "name": "Investor Presentation",
+      "kind": "presentation"
+    }
+  ],
+  "hdfc_document.json": [
+    {
+      "id": "56627eb392aa8a544bbce439cb537452c540351844c9cc42636798696a0f81c3",
+      "url": "https://nsearchives.nseindia.com/corporate/HDFCBANK_27102026080232_SEIntimation_appt_of_AB.pdf",
+      "name": "HDFC Bank leadership change 27 October 2026",
+      "kind": "filing"
+    }
+  ],
+  "kpit_fy25_document.json": [
+    {
+      "id": "f9fb497b7184abceb1ecaef82045c080ee793b687b16ef348a5e79dbe81f6362",
+      "url": "https://www.kpit.com/wp-content/uploads/2025/07/281182_KPIT-Annual-Report-2025_Spread.pdf",
+      "name": "Annual report FY25",
+      "kind": "annual_report"
+    }
+  ]
+}

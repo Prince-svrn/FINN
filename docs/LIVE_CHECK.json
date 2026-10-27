@@ -1,0 +1,22 @@
+{
+  "symbol": "POLYCAB",
+  "not_in_seed_universe": true,
+  "company_name": "Polycab India Ltd",
+  "financial_table_sections": [
+    "quarters",
+    "profit-loss",
+    "balance-sheet",
+    "cash-flow",
+    "ratios",
+    "shareholding"
+  ],
+  "discovered_primary_documents": 11,
+  "price_bars": 63,
+  "latest_price_date": "2026-10-26",
+  "exchange_filings": 1109,
+  "source_statuses": {
+    "screener": "fresh",
+    "price": "hit",
+    "exchange": "fresh"
+  }
+}

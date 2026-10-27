@@ -1,0 +1,12 @@
+services:
+  finn:
+    build: .
+    ports:
+      - "127.0.0.1:8000:8000"
+    volumes:
+      - finn-data:/app/runtime
+    env_file:
+      - path: .env
+        required: false
+volumes:
+  finn-data:

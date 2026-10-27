@@ -1,0 +1,9 @@
+.venv/
+__pycache__/
+.pytest_cache/
+.env
+runtime/
+*.pyc
+data/market.json
+data/*documents.json
+data/*document.json

@@ -1,0 +1,181 @@
+[
+  {
+    "symbol": "HDFCBANK",
+    "name": "HDFC Bank",
+    "sector": "Banking & finance",
+    "cap_tier": "Large",
+    "group": "portfolio",
+    "yahoo": "HDFCBANK.NS"
+  },
+  {
+    "symbol": "BAJFINANCE",
+    "name": "Bajaj Finance",
+    "sector": "Banking & finance",
+    "cap_tier": "Large",
+    "group": "portfolio",
+    "yahoo": "BAJFINANCE.NS"
+  },
+  {
+    "symbol": "CDSL",
+    "name": "Central Depository Services",
+    "sector": "Banking & finance",
+    "cap_tier": "Mid",
+    "group": "portfolio",
+    "yahoo": "CDSL.NS"
+  },
+  {
+    "symbol": "TCS",
+    "name": "Tata Consultancy Services",
+    "sector": "IT & SaaS",
+    "cap_tier": "Large",
+    "group": "portfolio",
+    "yahoo": "TCS.NS"
+  },
+  {
+    "symbol": "KPITTECH",
+    "name": "KPIT Technologies",
+    "sector": "IT & SaaS",
+    "cap_tier": "Mid",
+    "group": "portfolio",
+    "yahoo": "KPITTECH.NS"
+  },
+  {
+    "symbol": "RATEGAIN",
+    "name": "RateGain Travel Technologies",
+    "sector": "IT & SaaS",
+    "cap_tier": "Small",
+    "group": "portfolio",
+    "yahoo": "RATEGAIN.NS"
+  },
+  {
+    "symbol": "LT",
+    "name": "Larsen & Toubro",
+    "sector": "Industrials & defence",
+    "cap_tier": "Large",
+    "group": "portfolio",
+    "yahoo": "LT.NS"
+  },
+  {
+    "symbol": "HAL",
+    "name": "Hindustan Aeronautics",
+    "sector": "Industrials & defence",
+    "cap_tier": "Large",
+    "group": "portfolio",
+    "yahoo": "HAL.NS"
+  },
+  {
+    "symbol": "KAYNES",
+    "name": "Kaynes Technology India",
+    "sector": "Industrials & defence",
+    "cap_tier": "Mid",
+    "group": "portfolio",
+    "yahoo": "KAYNES.NS"
+  },
+  {
+    "symbol": "M&M",
+    "name": "Mahindra & Mahindra",
+    "sector": "Auto & EV",
+    "cap_tier": "Large",
+    "group": "portfolio",
+    "yahoo": "M&M.NS"
+  },
+  {
+    "symbol": "SONACOMS",
+    "name": "Sona BLW Precision Forgings",
+    "sector": "Auto & EV",
+    "cap_tier": "Mid",
+    "group": "portfolio",
+    "yahoo": "SONACOMS.NS"
+  },
+  {
+    "symbol": "SUNPHARMA",
+    "name": "Sun Pharmaceutical Industries",
+    "sector": "Pharma & healthcare",
+    "cap_tier": "Large",
+    "group": "portfolio",
+    "yahoo": "SUNPHARMA.NS"
+  },
+  {
+    "symbol": "MAXHEALTH",
+    "name": "Max Healthcare Institute",
+    "sector": "Pharma & healthcare",
+    "cap_tier": "Large",
+    "group": "portfolio",
+    "yahoo": "MAXHEALTH.NS"
+  },
+  {
+    "symbol": "TRENT",
+    "name": "Trent",
+    "sector": "Consumer & retail",
+    "cap_tier": "Large",
+    "group": "portfolio",
+    "yahoo": "TRENT.NS"
+  },
+  {
+    "symbol": "TITAN",
+    "name": "Titan Company",
+    "sector": "Consumer & retail",
+    "cap_tier": "Large",
+    "group": "portfolio",
+    "yahoo": "TITAN.NS"
+  },
+  {
+    "symbol": "RELIANCE",
+    "name": "Reliance Industries",
+    "sector": "Energy",
+    "cap_tier": "Large",
+    "group": "portfolio",
+    "yahoo": "RELIANCE.NS"
+  },
+  {
+    "symbol": "DEEPAKNTR",
+    "name": "Deepak Nitrite",
+    "sector": "Chemicals",
+    "cap_tier": "Mid",
+    "group": "portfolio",
+    "yahoo": "DEEPAKNTR.NS"
+  },
+  {
+    "symbol": "DIXON",
+    "name": "Dixon Technologies",
+    "sector": "EMS & manufacturing",
+    "cap_tier": "Mid",
+    "group": "portfolio",
+    "yahoo": "DIXON.NS"
+  },
+  {
+    "symbol": "ETERNAL",
+    "name": "Eternal (formerly Zomato)",
+    "sector": "New-age technology",
+    "cap_tier": "Large",
+    "group": "research",
+    "yahoo": "ETERNAL.NS"
+  },
+  {
+    "symbol": "INDHOTEL",
+    "name": "Indian Hotels Company",
+    "sector": "Hospitality",
+    "cap_tier": "Large",
+    "group": "research",
+    "yahoo": "INDHOTEL.NS"
+  },
+  {
+    "symbol": "ABB",
+    "name": "ABB India",
+    "sector": "Capital goods",
+    "cap_tier": "Large",
+    "group": "research",
+    "yahoo": "ABB.NS"
+  },
+  {
+    "symbol": "NH",
+    "name": "Narayana Hrudayalaya",
+    "sector": "Healthcare",
+    "cap_tier": "Mid",
+    "group": "research",
+    "yahoo": "NH.NS",
+    "aliases": [
+      "NARAYANA"
+    ]
+  }
+]

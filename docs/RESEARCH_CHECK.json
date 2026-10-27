@@ -1,0 +1,188 @@
+{
+  "symbol": "POLYCAB",
+  "coverage": {
+    "downloaded": 16,
+    "discovered": 16,
+    "transcripts": 4,
+    "annual_reports": 1,
+    "notices": 2
+  },
+  "analysis_status": "not_requested",
+  "primary_financial_table_extracted": true,
+  "documents": [
+    {
+      "name": "Transcript 2026-10-19",
+      "kind": "transcript",
+      "pages": 20,
+      "status": "text_ready"
+    },
+    {
+      "name": "Presentation 2026-10-15",
+      "kind": "presentation",
+      "pages": 20,
+      "status": "text_ready"
+    },
+    {
+      "name": "Results 2026-10-15",
+      "kind": "results",
+      "pages": 5,
+      "status": "text_ready"
+    },
+    {
+      "name": "Results 2026-10-15",
+      "kind": "results",
+      "pages": 14,
+      "status": "text_ready"
+    },
+    {
+      "name": "Transcript 2026-07-20",
+      "kind": "transcript",
+      "pages": 19,
+      "status": "text_ready"
+    },
+    {
+      "name": "Presentation 2026-07-16",
+      "kind": "presentation",
+      "pages": 20,
+      "status": "text_ready"
+    },
+    {
+      "name": "Results 2026-07-16",
+      "kind": "results",
+      "pages": 4,
+      "status": "text_ready"
+    },
+    {
+      "name": "Results 2026-07-16",
+      "kind": "results",
+      "pages": 11,
+      "status": "text_ready"
+    },
+    {
+      "name": "Annual Report 2026-06-09",
+      "kind": "annual_report_notice",
+      "pages": 2,
+      "status": "notice_only"
+    },
+    {
+      "name": "Transcript 2026-05-08",
+      "kind": "transcript",
+      "pages": 19,
+      "status": "text_ready"
+    },
+    {
+      "name": "Presentation 2026-05-06",
+      "kind": "presentation",
+      "pages": 67,
+      "status": "text_ready"
+    },
+    {
+      "name": "Presentation 2026-05-06",
+      "kind": "presentation",
+      "pages": 31,
+      "status": "text_ready"
+    },
+    {
+      "name": "Results 2026-05-06",
+      "kind": "results",
+      "pages": 4,
+      "status": "text_ready"
+    },
+    {
+      "name": "Transcript 2026-01-22",
+      "kind": "transcript",
+      "pages": 20,
+      "status": "text_ready"
+    },
+    {
+      "name": "Annual Report 2025-06-10",
+      "kind": "annual_report_notice",
+      "pages": 2,
+      "status": "notice_only"
+    },
+    {
+      "name": "Annual Report 2024-06-22",
+      "kind": "annual_report",
+      "pages": 262,
+      "status": "text_ready"
+    }
+  ],
+  "source_failures": [],
+  "financials": {
+    "periods": [
+      "Q2FY27",
+      "Q1FY27",
+      "Q2FY26"
+    ],
+    "rows": [
+      {
+        "key": "revenue",
+        "label": "Revenue",
+        "values": [
+          9898.9,
+          8209.7,
+          6477.2
+        ],
+        "qoq": 20.575660499165615,
+        "yoy": 52.82683875748779,
+        "unit": "\u20b9 Cr"
+      },
+      {
+        "key": "ebitda",
+        "label": "Reported EBITDA",
+        "values": [
+          1422.5,
+          1136.2,
+          1020.7
+        ],
+        "qoq": 25.19802851610631,
+        "yoy": 39.36514156951112,
+        "unit": "\u20b9 Cr"
+      },
+      {
+        "key": "margin",
+        "label": "EBITDA margin",
+        "values": [
+          14.370283566860964,
+          13.839726177570435,
+          15.758352374482804
+        ],
+        "qoq": 53.055738929052865,
+        "yoy": -138.80688076218402,
+        "unit": "%"
+      },
+      {
+        "key": "pbt",
+        "label": "PBT",
+        "values": [
+          1306.2,
+          1058.2,
+          921.0
+        ],
+        "qoq": 23.436023436023447,
+        "yoy": 41.824104234527695,
+        "unit": "\u20b9 Cr"
+      },
+      {
+        "key": "pat",
+        "label": "PAT",
+        "values": [
+          990.0,
+          796.7,
+          693.0
+        ],
+        "qoq": 24.262583155516502,
+        "yoy": 42.85714285714286,
+        "unit": "\u20b9 Cr"
+      }
+    ],
+    "basis": "consolidated; company-reported EBITDA",
+    "source": {
+      "url": "https://nsearchives.nseindia.com/corporate/POLYCAB_15102026135028_EarningsPresentation15102026.pdf",
+      "page": 15,
+      "name": "Presentation 2026-10-15",
+      "document_id": "8386e32c480425b569ad0cbfdebc6548173fb88295f72fc2d331fd88b7a2080e"
+    },
+    "method": "Labelled primary grid; INR million converted to \u20b9 crore; arithmetic computed in Python."
+  }
+}
