@@ -20,7 +20,7 @@ sys.path.insert(0,str(ROOT))
 DEFAULTS={
     'FINN_LLM_BASE_URL':'https://generativelanguage.googleapis.com/v1beta/openai',
     'FINN_MODEL_T1':'',
-    'FINN_MODEL_T2':'gemini-3.8-flash',
+    'FINN_MODEL_T2':'gemini-3.5-flash-lite',
     'FINN_POLL_INTERVAL_SECONDS':'0',
     # Leave pricing unknown: FINN cannot inspect the owner's billing tier.
     'FINN_T1_INPUT_USD_PER_MILLION':'',
@@ -50,16 +50,35 @@ def update_env(path,settings):
     finally:
         if temp_name and os.path.exists(temp_name):os.unlink(temp_name)
 
-async def check_connection():
+async def check_connection(research=False):
     from typing import Literal
     from pydantic import BaseModel
     from backend.llm_router import run
     class ConnectionCheck(BaseModel):
         answer:Literal['OK']
-    print('Checking the configured Gemini model with one small JSON request...')
-    result=await run('connection_check',[{'role':'user','content':'Return exactly this JSON object: {"answer":"OK"}'}],ConnectionCheck,2,use_cache=False)
+    if research:
+        from backend.schemas import Synthesis
+        from backend.services.documents import validate_citation
+        text='Example company manufactures electric motors.'
+        citation={'document_id':'setup-fixture','page':1,'quote':text}
+        expected={'business':[{'claim':text,'citation':citation}],
+                  'audit':[],'guidance':[],'bull':[],'bear':[],'governance':[]}
+        schema=Synthesis
+        prompt='This is a synthetic connection-test fixture, not investment research. Return exactly this JSON: '+json.dumps(expected)
+    else:
+        schema=ConnectionCheck
+        prompt='Return exactly this JSON object: {"answer":"OK"}'
+    print('Checking the configured Gemini model with one '+('research-format' if research else 'small')+' JSON request...',flush=True)
+    result=await run('research_format_check' if research else 'connection_check',[{'role':'user','content':prompt}],schema,2,use_cache=False)
     if result['status']=='ok':
-        print('PASS: Gemini returned valid JSON. The API connection works.')
+        if research:
+            findings=result['data']['business']
+            docs=[{'id':'setup-fixture','pages':[{'page':1,'text':text}]}]
+            if not findings or not all(validate_citation(f['citation'],docs) for f in findings):
+                print('CHECK FAILED: The research test did not return a valid source citation.')
+                return 1
+            print('PASS: Research-format JSON and the test citation validated.')
+        else:print('PASS: Gemini returned valid JSON. The API connection works.')
         print('Next: restart FINN, select a company, and run Include model synthesis.')
         print('This checks the API connection; full primary-document research still needs testing.')
         return 0
@@ -70,6 +89,7 @@ async def check_connection():
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--check',action='store_true',help='Check the existing Gemini configuration without changing it')
+    parser.add_argument('--research-check',action='store_true',help='Check the full research format and a synthetic citation without changing settings')
     args=parser.parse_args()
     path=ROOT/'.env'
     print('FINN - Gemini Free Tier setup')
@@ -77,7 +97,7 @@ def main():
     print('Use a project marked Free Tier with no linked billing account.')
     print('Do not add a payment method or upgrade. Free access has quotas and eligibility limits.')
     print('FINN cannot verify your billing tier. Keep the key private.')
-    if not args.check:
+    if not (args.check or args.research_check):
         try:
             with warnings.catch_warnings():
                 warnings.simplefilter('error',getpass.GetPassWarning)
@@ -98,7 +118,7 @@ def main():
     if os.getenv('FINN_LLM_BASE_URL','').rstrip('/')!=DEFAULTS['FINN_LLM_BASE_URL']:
         print('The settings do not point to Gemini. Run setup-free-ai.cmd first. No request was sent.')
         return 1
-    return asyncio.run(check_connection())
+    return asyncio.run(check_connection(research=args.research_check))
 
 if __name__=='__main__':
     try:sys.exit(main())

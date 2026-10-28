@@ -74,10 +74,45 @@ def test_gemini_contract_and_uncached_connection_check(provider,monkeypatch):
     for _ in range(2):
         assert asyncio.run(llm_router.run('connection_check',[],Answer,2,use_cache=False))['status']=='ok'
     assert len(calls)==2
-    assert calls[0]['response_format']['json_schema']['schema']==Answer.model_json_schema()
+    assert calls[0]['response_format']=={'type':'json_object'}
+    assert json.dumps(Answer.model_json_schema()) in calls[0]['messages'][0]['content']
     assert calls[0]['reasoning_effort']=='low'
     assert 'temperature' not in calls[0]
     assert store.telemetry()['cache_hits']==0
+
+def test_gemini_research_json_mode_keeps_local_validation(provider,monkeypatch):
+    from backend.schemas import Synthesis
+    replies,calls=provider
+    monkeypatch.setenv('FINN_LLM_BASE_URL','https://generativelanguage.googleapis.com/v1beta/openai')
+    valid={'business':[{'claim':'Example company builds motors.',
+                       'citation':{'document_id':'doc1','page':1,'quote':'Example company builds motors.'}}]}
+    replies.extend([json.dumps({'business':'not a list'}),json.dumps(valid)])
+    messages=[{'role':'user','content':'Primary evidence: Example company builds motors.'}]
+    first=asyncio.run(llm_router.run('primary_research',messages,Synthesis,2))
+    second=asyncio.run(llm_router.run('primary_research',messages,Synthesis,2))
+    assert first['error_code']=='invalid_response'
+    assert second['status']=='ok'
+    assert second['data']['business'][0]['citation']['page']==1
+    assert len(calls)==2 and calls[0]['response_format']=={'type':'json_object'}
+    assert 'json_schema' not in calls[0]['response_format']
+    assert json.dumps(Synthesis.model_json_schema()) in calls[0]['messages'][0]['content']
+    assert messages==[{'role':'user','content':'Primary evidence: Example company builds motors.'}]
+
+def test_google_list_error_preserves_quota_classification():
+    response=httpx.Response(429,json=[{'error':{'code':429,'type':'insufficient_quota','message':'Do not expose this'}}])
+    code,reason=llm_router.provider_error(response)
+    assert code=='quota_exhausted' and 'Do not expose this' not in reason
+
+@pytest.mark.parametrize('page,exit_code',[(1,0),(2,1)])
+def test_full_research_setup_check_validates_citation(provider,monkeypatch,capsys,page,exit_code):
+    from scripts.setup_free_ai import check_connection
+    replies,_=provider
+    monkeypatch.setenv('FINN_LLM_BASE_URL','https://generativelanguage.googleapis.com/v1beta/openai')
+    replies.append(json.dumps({'business':[{'claim':'Example company manufactures electric motors.',
+        'citation':{'document_id':'setup-fixture','page':page,'quote':'Example company manufactures electric motors.'}}]}))
+    assert asyncio.run(check_connection(research=True))==exit_code
+    output=capsys.readouterr().out
+    assert ('PASS: Research-format' in output)==(exit_code==0)
 
 @pytest.mark.parametrize('status,code,expected',[
     (429,'credit_balance_exhausted','quota_exhausted'),

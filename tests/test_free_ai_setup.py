@@ -12,7 +12,7 @@ def test_setup_replaces_old_key_and_duplicates_preserving_other_settings(tmp_pat
     assert values['FINN_LLM_API_KEY']=='test-gemini-key'
     assert values['FINN_API_TOKEN']=='keep-local-token'
     assert values['FINN_MODEL_T1']=='' and values['FINN_POLL_INTERVAL_SECONDS']=='0'
-    assert values['FINN_MODEL_T2']=='gemini-3.8-flash'
+    assert values['FINN_MODEL_T2']=='gemini-3.5-flash-lite'
     assert values['FINN_T2_INPUT_USD_PER_MILLION']==''
     text=path.read_text()
     assert text.count('FINN_LLM_API_KEY=')==1 and 'old-key' not in text

@@ -32,3 +32,17 @@ The owner subsequently authorized public access to the saved-data site; that cha
 Added a Gemini Free Tier setup helper, the provider-specific JSON-schema request format, an uncached connection check, safe actionable errors in the research screen, and provider-aware inference cache keys. The helper keeps T1 and polling disabled and makes no paid fallback calls. Free-tier eligibility must be checked in AI Studio; FINN cannot verify billing status from a key. Updated the download and submission notes to reflect public demo access and zero-cost setup.
 
 60 Python tests and 6 frontend checks passed. Tests cover provider failures, no automatic retries, key-safe error handling, Gemini requests, uncached connection checks, truncated output rejection, cache separation and local configuration preservation. Tests use mock provider responses. A successful real Gemini connection and full cited synthesis remain pending the owner's eligible key. The Windows setup launcher has not been executed on Windows by the build agent.
+
+
+## Gemini research-format compatibility, 28 October 2026
+
+The owner's Free Tier project and HTTP 200 model-list request were visible in screenshots. gemini-3.8-flash timed out on a connection test; the owner switched to gemini-3.5-flash-lite and the simple JSON connection test passed. SONACOMS retrieved 18 documents including four transcripts, but full synthesis returned HTTP 400. An isolated full-schema request reproduced a list-shaped error with status INVALID_ARGUMENT and message "Request contains an invalid argument." The first diagnostic incorrectly assumed a dictionary; corrected it to reveal the provider response.
+
+Changed Gemini requests to JSON-object mode with the schema in the prompt. Local Pydantic validation and exact-citation checks remain active. Added a full research-format fixture check, list-shaped error handling and regression tests. Default setup now uses the model that passed the owner's connection test. 64 Python checks pass. Full real-company synthesis with this change is still pending; the saved-data hosted demo is unaffected.
+
+
+## Owner-observed live synthesis result
+
+After replacing backend/llm_router.py and restarting, the owner supplied SONACOMS screenshots showing three Business findings, one Guidance finding, two Bull findings, one Bear finding and one Governance finding, each with a source badge. All visible badges refer to the transcript dated 2026-07-30. The model-assisted audit reports no comparable commitments. This demonstrates the live model-to-interface path on the owner's laptop; it does not establish cross-quarter completeness or independent semantic correctness.
+
+Review observations: the order-book claim says "240 billion" without a currency; confirm and retain the source currency before relying on that number. The Governance finding is explicitly management's account of its own disclosure practice, not independent evidence of sound governance. The multi-quarter audit remains demonstrated by the separately reviewed KPIT case. No full raw model response or cited PDF pages from this particular run were supplied for independent claim verification.

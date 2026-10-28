@@ -11,12 +11,14 @@ from urllib.parse import urlsplit
 from pydantic import ValidationError
 from backend import store
 
-PROMPT_VERSION='finn-2026-10-28-v2'
+PROMPT_VERSION='finn-2026-10-28-v3'
 
 def provider_error(response):
     """Return fixed, safe explanations; never expose response bodies or credentials."""
     try:
-        error=response.json().get('error',{})
+        payload=response.json()
+        if isinstance(payload,list):payload=next((item for item in payload if isinstance(item,dict) and 'error' in item),{})
+        error=payload.get('error',{}) if isinstance(payload,dict) else {}
         if not isinstance(error,dict):error={}
     except (ValueError,AttributeError):error={}
     codes={str(error.get(k,'')).lower() for k in ('code','type','status')}
@@ -43,11 +45,12 @@ async def run(task, messages, schema, tier=1, *, use_cache=True):
     body={'model':model,'messages':messages,'temperature':0,
           'response_format':{'type':'json_object'},'max_tokens':5000}
     if urlsplit(base_url).hostname=='generativelanguage.googleapis.com':
-        # Gemini's compatible endpoint supports JSON schemas and thinking controls.
-        # Leave sampling at its provider default; reserve room for thinking + JSON.
+        # Google's compatible endpoint rejected the nested Synthesis schema (400).
+        # Use JSON mode with the schema in the prompt, then validate locally.
+        # Do not silently retry, switch providers, or relax Pydantic/citation checks.
         body.pop('temperature')
-        body.update(max_tokens=8192,reasoning_effort='low',response_format={
-            'type':'json_schema','json_schema':{'name':schema.__name__,'schema':schema.model_json_schema()}})
+        body.update(max_tokens=8192,reasoning_effort='low')
+        body['messages']=[{'role':'system','content':'Return exactly one JSON object matching this schema. No markdown. '+json.dumps(schema.model_json_schema())},*messages]
     cache_key='llm:'+store.digest(json.dumps([PROMPT_VERSION,base_url,body,schema.model_json_schema()],sort_keys=True).encode())
     if use_cache and (cached:=store.get(cache_key)) is not None:
         store.log(task,tier,model,cache_hit=True);return {'status':'ok','data':cached,'cache_hit':True}

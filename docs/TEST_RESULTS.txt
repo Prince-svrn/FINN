@@ -1,9 +1,11 @@
-Final validation, 27 October 2026
-60 Python tests passed (one Starlette/httpx deprecation warning).
+Final validation, 28 October 2026
+64 Python tests passed (one Starlette/httpx deprecation warning).
 6 frontend checks passed.
 JavaScript syntax check passed.
 Model provider contract tested with mocks; no real provider credentials available.
 Windows manual startup confirmed by user screenshot on Python 3.13.15.
 PIDILITIND fresh-data verification: see PIDILITIND_LIVE_CHECK.json.
 
-Zero-cost configuration pass: Gemini request formatting; provider-aware cache; quota/authentication/model/server errors; no automatic retries; no secret error leakage; output truncation rejection; .env migration preserving unrelated settings; research-to-UI error propagation and escaping. All provider responses in these tests are mocked. Real Gemini connection and full synthesis remain pending an eligible user key. Windows setup-free-ai.cmd has not been run on Windows by the build agent.
+Zero-cost configuration pass: Gemini request formatting; provider-aware cache; quota/authentication/model/server errors; no automatic retries; no secret error leakage; output truncation rejection; .env migration preserving unrelated settings; research-to-UI error propagation and escaping. All provider responses in these tests are mocked. The owner separately verified a real Gemini connection. The owner subsequently supplied screenshots of populated SONACOMS synthesis after the compatibility change. Independent semantic review remains incomplete. Windows setup-free-ai.cmd has not been run on Windows by the build agent.
+
+Research-format regression: full Synthesis request uses JSON-object mode and keeps local validation; invalid JSON structure is rejected; Google list-shaped errors preserve quota classification; research setup check accepts a valid fixture citation and rejects a wrong page. 64 Python tests passed.
