@@ -30,6 +30,9 @@ async function run(){
   context.fetch=async()=>{throw Error('Network unavailable')};
   await vm.runInContext('refresh()',context);
   assert.equal(vm.runInContext('busy',context),false,'Failed refresh must restore controls');
-  console.log('5 frontend request checks passed');
+  const errorMarkup=vm.runInContext("renderModelAnalysis({analysis_status:'error',analysis_reason:'Free quota reached. <unsafe>'})",context);
+  assert.match(errorMarkup,/Free quota reached/);
+  assert.ok(!errorMarkup.includes('<unsafe>'),'Provider explanations must be HTML escaped');
+  console.log('6 frontend checks passed');
 }
 run().catch(error=>{console.error(error);process.exitCode=1});

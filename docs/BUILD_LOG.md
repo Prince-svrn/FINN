@@ -24,3 +24,11 @@ Confirmed user Windows startup on Python 3.13.15. Added `start.cmd`, longer cold
 47 Python tests and 5 frontend request checks pass; model tests use an HTTP mock and do not validate a real paid provider. Empty-cache PIDILITIND retrieval returned 64 price bars, six table sections and 12 documents including four transcripts; seven sources failed, no complete annual report was fetched, and no supported primary financial table was extracted. These limits are retained in the live-check JSON.
 
 The saved-data site was deployed privately on 28 October 2026. The Python backend remains local. No evaluator invitations or submission email were sent. The covering-email subject was corrected to the exact required text.
+
+## Zero-cost setup, 28 October 2026
+
+The owner subsequently authorized public access to the saved-data site; that change was verified. The repository remains private. The owner's local OpenAI diagnostic returned HTTP 429 / credit_balance_exhausted / insufficient_quota. Rechecked the challenge's explicit free-tier allowance and confirmed that buying API credits is not required.
+
+Added a Gemini Free Tier setup helper, the provider-specific JSON-schema request format, an uncached connection check, safe actionable errors in the research screen, and provider-aware inference cache keys. The helper keeps T1 and polling disabled and makes no paid fallback calls. Free-tier eligibility must be checked in AI Studio; FINN cannot verify billing status from a key. Updated the download and submission notes to reflect public demo access and zero-cost setup.
+
+60 Python tests and 6 frontend checks passed. Tests cover provider failures, no automatic retries, key-safe error handling, Gemini requests, uncached connection checks, truncated output rejection, cache separation and local configuration preservation. Tests use mock provider responses. A successful real Gemini connection and full cited synthesis remain pending the owner's eligible key. The Windows setup launcher has not been executed on Windows by the build agent.

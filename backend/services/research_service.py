@@ -64,6 +64,8 @@ async def research(symbol,use_models=False,refresh=False):
                   {'role':'user','content':json.dumps(selected)}]
         output=await run('primary_research',messages,Synthesis,2)
         result['analysis_status']=output['status']
+        if output.get('reason'):result['analysis_reason']=output['reason']
+        if output.get('error_code'):result['analysis_error_code']=output['error_code']
         if output['status']=='ok':
             analysis=output['data'];rejected=0
             for field in ['business','guidance','bull','bear','governance']:
@@ -78,5 +80,8 @@ async def research(symbol,use_models=False,refresh=False):
             analysis['rejected_citations']=rejected
             analysis['warning']='Model interpretation; citations verified as exact source spans, not independently verified semantic entailment.'
             result['analysis']=analysis
+    elif use_models:
+        result['analysis_status']='no_evidence'
+        result['analysis_reason']='No primary documents could be retrieved, so no model request was sent.'
     store.put('research-v1:'+company['symbol'],result)
     return result

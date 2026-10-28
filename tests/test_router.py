@@ -14,6 +14,7 @@ def provider(tmp_path, monkeypatch):
     monkeypatch.setattr(store, 'DB_PATH', tmp_path/'router.db')
     monkeypatch.setenv('FINN_LLM_API_KEY', 'local-test-key')
     monkeypatch.setenv('FINN_MODEL_T2', 'local-test-model')
+    monkeypatch.setenv('FINN_LLM_BASE_URL', 'https://example.com/v1')
     monkeypatch.delenv('FINN_T2_INPUT_USD_PER_MILLION', raising=False)
     monkeypatch.delenv('FINN_T2_OUTPUT_USD_PER_MILLION', raising=False)
     replies=[]
@@ -55,3 +56,63 @@ def test_actual_usage_drives_cost(provider,monkeypatch):
     monkeypatch.setenv('FINN_T2_OUTPUT_USD_PER_MILLION','2')
     asyncio.run(llm_router.run('test',[],Answer,2))
     assert store.telemetry()['cost']==pytest.approx(0.00004)
+
+def test_provider_change_invalidates_cache(provider,monkeypatch):
+    replies,calls=provider
+    replies.extend(['{"claim":"First provider"}','{"claim":"Second provider"}'])
+    asyncio.run(llm_router.run('test',[],Answer,2))
+    monkeypatch.setenv('FINN_LLM_BASE_URL','https://other.example/v1')
+    result=asyncio.run(llm_router.run('test',[],Answer,2))
+    assert result['data']['claim']=='Second provider'
+    assert len(calls)==2
+
+def test_gemini_contract_and_uncached_connection_check(provider,monkeypatch):
+    replies,calls=provider
+    replies.extend(['{"claim":"OK"}']*2)
+    monkeypatch.setenv('FINN_LLM_BASE_URL','https://generativelanguage.googleapis.com/v1beta/openai/')
+    monkeypatch.setenv('FINN_MODEL_T2','gemini-3.8-flash')
+    for _ in range(2):
+        assert asyncio.run(llm_router.run('connection_check',[],Answer,2,use_cache=False))['status']=='ok'
+    assert len(calls)==2
+    assert calls[0]['response_format']['json_schema']['schema']==Answer.model_json_schema()
+    assert calls[0]['reasoning_effort']=='low'
+    assert 'temperature' not in calls[0]
+    assert store.telemetry()['cache_hits']==0
+
+@pytest.mark.parametrize('status,code,expected',[
+    (429,'credit_balance_exhausted','quota_exhausted'),
+    (429,'insufficient_quota','quota_exhausted'),
+    (429,'RESOURCE_EXHAUSTED','rate_limited'),
+    (401,'invalid_api_key','access_denied'),
+    (403,'PERMISSION_DENIED','access_denied'),
+    (404,'NOT_FOUND','model_unavailable'),
+    (400,'INVALID_ARGUMENT','invalid_request'),
+    (503,'UNAVAILABLE','provider_unavailable'),
+])
+def test_errors_are_actionable_secret_free_and_not_retried(tmp_path,monkeypatch,status,code,expected):
+    monkeypatch.setattr(store,'DB_PATH',tmp_path/'errors.db')
+    monkeypatch.setenv('FINN_LLM_API_KEY','private-test-secret')
+    monkeypatch.setenv('FINN_MODEL_T2','test')
+    calls=[]
+    def respond(request):
+        calls.append(request)
+        return httpx.Response(status,json={'error':{'code':code,'message':'private-test-secret'}})
+    client=httpx.AsyncClient
+    monkeypatch.setattr(llm_router.httpx,'AsyncClient',lambda **kw:client(transport=httpx.MockTransport(respond),**kw))
+    result=asyncio.run(llm_router.run('test',[],Answer,2))
+    assert result['status']=='error' and result['error_code']==expected
+    assert len(result['reason'])>40
+    assert 'private-test-secret' not in json.dumps(result)+json.dumps(store.telemetry())
+    assert len(calls)==1
+    with store.connect() as db:assert db.execute('SELECT COUNT(*) FROM cache').fetchone()[0]==0
+
+def test_truncated_json_is_rejected_even_when_parseable(tmp_path,monkeypatch):
+    monkeypatch.setattr(store,'DB_PATH',tmp_path/'truncated.db')
+    monkeypatch.setenv('FINN_LLM_API_KEY','test')
+    monkeypatch.setenv('FINN_MODEL_T2','test')
+    client=httpx.AsyncClient
+    def respond(request):
+        return httpx.Response(200,json={'choices':[{'finish_reason':'length','message':{'content':'{"claim":"partial"}'}}]})
+    monkeypatch.setattr(llm_router.httpx,'AsyncClient',lambda **kw:client(transport=httpx.MockTransport(respond),**kw))
+    assert asyncio.run(llm_router.run('test',[],Answer,2))['error_code']=='output_truncated'
+    with store.connect() as db:assert db.execute('SELECT COUNT(*) FROM cache').fetchone()[0]==0

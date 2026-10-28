@@ -5,7 +5,7 @@ r=Path(__file__).resolve().parents[1]
 out=Path(sys.argv[1]).resolve() if len(sys.argv)>1 else r/'dist/FINN_Source.zip'
 out.parent.mkdir(parents=True,exist_ok=True)
 allowed={'backend','frontend','dist','config','scripts','tests','docs'}
-root_files={'README.md','START_HERE.txt','requirements.txt','start.sh','start.ps1','start.cmd','Dockerfile','compose.yaml','.env.example','.gitignore','.dockerignore'}
+root_files={'README.md','START_HERE.txt','requirements.txt','start.sh','start.ps1','start.cmd','setup-free-ai.cmd','Dockerfile','compose.yaml','.env.example','.gitignore','.dockerignore'}
 with zipfile.ZipFile(out,'w',zipfile.ZIP_DEFLATED,compresslevel=9) as z:
     for p in sorted(r.rglob('*')):
         if not p.is_file():continue

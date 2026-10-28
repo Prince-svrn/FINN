@@ -3,10 +3,10 @@ FINN — START HERE
 1. Extract this ZIP first (do not run files from inside the ZIP viewer).
 2. Open FINN/dist/FINN_Demo.html in Chrome or Edge to inspect the complete saved-data demo without installation.
 3. For live data: install Python 3.11 or newer and double-click start.cmd in FINN, then open http://127.0.0.1:8000.
-4. Read README.md for model credentials, source coverage and setup details.
+4. For free AI synthesis, read docs/FREE_AI_SETUP.md, create a Gemini key in a Free Tier project (no billing), and double-click setup-free-ai.cmd. Restart FINN afterwards.
 5. docs/PROMPT_REVIEW.md explains what was implemented, improved and remains incomplete.
 6. docs/SUBMISSION_CHECKLIST.md and COVERING_EMAIL.md prepare your ENAM submission.
 
-Verified: 47 Python checks and 5 frontend request checks; live POLYCAB discovery and primary financial extraction; 390x844 mobile checks.
+Verified: 60 Python checks and 6 frontend checks; live POLYCAB discovery and primary financial extraction; earlier 390x844 mobile checks. Real Gemini synthesis still requires an eligible key and a successful owner-run test.
 
-Hosted demo: https://finn-investment-agent-prince.safegrape512.chatgpt.site (currently owner-private). Evaluator sharing still needs to be enabled before submission. Source repository: https://github.com/Prince-svrn/FINN. The standalone demo and backend are usable from this package. Model synthesis needs your API credentials and has not been exercised with paid models.
+Hosted demo: https://finn-investment-agent-prince.safegrape512.chatgpt.site (public saved-data demo). Source repository: https://github.com/Prince-svrn/FINN. The standalone demo and backend are usable from this package. Live model synthesis runs locally with your own provider key, not on the hosted site. No purchase is required. Download the latest source from GitHub; older laptop copies do not update automatically.

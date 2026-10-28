@@ -8,7 +8,7 @@ A mobile-first research prototype for the ENAM AI Engineer Build Challenge. FINN
 
 Double-click `dist/FINN_Demo.html` in Chrome or Edge. It contains the saved data and complete interface in one file. Live refresh and arbitrary-ticker retrieval require the backend below.
 
-**Hosted demo:** [https://finn-investment-agent-prince.safegrape512.chatgpt.site](https://finn-investment-agent-prince.safegrape512.chatgpt.site) — deployed on 28 October 2026, currently owner-private. Enable evaluator access before submitting this link. It serves the saved-data prototype; live retrieval still requires the Python backend. The source repository is [Prince-svrn/FINN](https://github.com/Prince-svrn/FINN). The source package and standalone demo are usable locally.
+**Hosted demo:** [https://finn-investment-agent-prince.safegrape512.chatgpt.site](https://finn-investment-agent-prince.safegrape512.chatgpt.site) — deployed on 28 October 2026 and made public with the owner's permission. It serves the saved-data prototype; live retrieval and model synthesis require the local Python backend. The source repository is [Prince-svrn/FINN](https://github.com/Prince-svrn/FINN). Download the latest source from GitHub for the updated Gemini setup; older downloads do not update automatically.
 
 ## Start on Windows
 
@@ -47,7 +47,11 @@ Both serve the UI and API on port 8000. Stop with Ctrl+C. Docker binds the host 
 
 ## Optional model configuration
 
-Copy `.env.example` to `.env`. Add a provider API key, compatible Chat Completions base URL, and T1/T2 model IDs. The adapter requires JSON-object responses and the `max_tokens` parameter; not every provider/model supports that interface. Enter current per-million-token prices for the chosen models. Missing prices are recorded as unknown, not free. Do not commit `.env`.
+**No purchase is required by the assignment.** For the zero-cost route, create a Gemini key in a Google AI Studio project marked **Free Tier**, with no billing account attached, then double-click **setup-free-ai.cmd**. The helper saves settings locally and runs one small JSON connection check. Keep billing disabled. Free access is subject to Google's eligibility and quota limits. Follow [the step-by-step guide](docs/FREE_AI_SETUP.md), then restart FINN and test **Include model synthesis** on a company.
+
+The default is `gemini-3.8-flash` through Google's OpenAI-compatible endpoint, with a JSON schema and low reasoning effort. T1 classification and background polling stay disabled. The adapter validates output, rejects truncation, caches successful results, and explains quota/authentication failures in the research screen. No automatic paid fallback is configured. FINN cannot inspect billing status; pricing remains unknown until explicitly configured by the operator.
+
+For other providers, copy `.env.example` to `.env` and change the key, compatible Chat Completions base URL and model IDs. The generic adapter expects JSON-object responses and `max_tokens`; not every model supports that interface. Enter actual per-million-token prices if applicable. Missing prices are recorded as unknown, not free. Do not commit `.env`.
 
 - T0: regex classification, parsing and arithmetic; no model charge.
 - T1: ambiguous filing classification when configured.
@@ -55,7 +59,7 @@ Copy `.env.example` to `.env`. Add a provider API key, compatible Chat Completio
 - Optional `BRAVE_SEARCH_API_KEY`: Push-only executive background search through `/api/executive`; it is not part of Pull research.
 - `FINN_POLL_INTERVAL_SECONDS`: enable portfolio polling while the backend is running (minimum 300 seconds). Default is off.
 
-No paid model calls or Brave calls were made during this build. Those provider integrations are implemented but not end-to-end validated with credentials. Headline classification may invoke T1 on refresh when configured. Keep polling off until you have checked usage and provider quotas.
+The owner's OpenAI connection test returned `credit_balance_exhausted`; no successful OpenAI synthesis was verified. Gemini integration is mock-tested; a successful live connection and complete cited research result remain to be checked with the owner's eligible free-tier key. No Brave call was validated. Headline classification may invoke T1 on refresh if manually configured. Keep polling off while checking quota limits.
 
 ## Contents
 
@@ -82,4 +86,4 @@ This is a single-user app. Browser notes stay on the device; optional API storag
 
 ## Final validation pass
 
-47 Python checks and 5 frontend request checks pass. Model-adapter tests use a mock provider and verify schema rejection, cache reuse, invalidation when evidence changes, and usage-based cost accounting; these are not a claim of a real provider test. A fresh empty-cache PIDILITIND run retrieved 64 price bars, six table sections and 12 primary documents including four transcripts in 122.7 seconds. Seven source downloads failed; no complete annual report or supported primary financial grid was retrieved for that run. See `docs/PIDILITIND_LIVE_CHECK.json`. The UI waits longer for cold company discovery, recovers after timeouts, and prevents overlapping requests from leaving controls stuck.
+60 Python checks and 6 frontend checks pass. Model-adapter tests use mock responses and verify Gemini request formatting, schema rejection, truncation handling, provider/evidence cache invalidation, safe error reporting without retry loops, and usage-based cost accounting. Setup tests verify replacing old credentials without losing unrelated settings. These are not a claim of a real provider test or a Windows launcher test. A fresh empty-cache PIDILITIND run retrieved 64 price bars, six table sections and 12 primary documents including four transcripts in 122.7 seconds. Seven source downloads failed; no complete annual report or supported primary financial grid was retrieved for that run. See `docs/PIDILITIND_LIVE_CHECK.json`. The UI waits longer for cold company discovery, recovers after timeouts, and prevents overlapping requests from leaving controls stuck.
