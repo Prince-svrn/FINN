@@ -8,11 +8,13 @@ A mobile-first research prototype for the ENAM AI Engineer Build Challenge. FINN
 
 Double-click `dist/FINN_Demo.html` in Chrome or Edge. It contains the saved data and complete interface in one file. Live refresh and arbitrary-ticker retrieval require the backend below.
 
-**Publication status:** the hosting service returned an internal error while issuing repository access. No live website deployment has been completed. The source repository is [Prince-svrn/FINN](https://github.com/Prince-svrn/FINN). The source package and standalone demo are usable locally.
+**Hosted demo:** [https://finn-investment-agent-prince.safegrape512.chatgpt.site](https://finn-investment-agent-prince.safegrape512.chatgpt.site) — deployed on 28 October 2026, currently owner-private. Enable evaluator access before submitting this link. It serves the saved-data prototype; live retrieval still requires the Python backend. The source repository is [Prince-svrn/FINN](https://github.com/Prince-svrn/FINN). The source package and standalone demo are usable locally.
 
 ## Start on Windows
 
-Install Python 3.11 or 3.12, extract this project, open PowerShell in its folder, and run:
+Install Python 3.11 or newer, extract this project, and double-click `start.cmd`. Python 3.13.15 was confirmed to start the app on the user's Windows laptop. Keep the terminal open while using FINN.
+
+Alternatively, open PowerShell in the project folder and run:
 
 ```powershell
 .\start.ps1
@@ -33,7 +35,7 @@ Alternative, with Docker Compose v2.24+:
 docker compose up --build
 ```
 
-Both serve the UI and API on port 8000. Stop with Ctrl+C. Docker binds the host port to localhost and retains SQLite data in a named volume. Windows and Docker launchers are supplied but were not executed on their target platforms during this build.
+Both serve the UI and API on port 8000. Stop with Ctrl+C. Docker binds the host port to localhost and retains SQLite data in a named volume. The equivalent manual startup commands were confirmed working on Windows with Python 3.13.15. The convenience launchers and Docker configuration have not been executed on their target platforms.
 
 ## Try the product
 
@@ -68,7 +70,7 @@ No paid model calls or Brave calls were made during this build. Those provider i
 - `scripts/capture_sources.py`: recreate local build inputs from public sources, subject to provider availability.
 - `scripts/build_snapshot.py`: rebuild the curated case using those captured documents; run from project root. Curation is explicitly separate from the generic live engine.
 
-To edit the UI, change `frontend/` and run `python scripts/sync_frontend.py`. The committed `dist/` is ready to serve. Run tests with `.venv/bin/python -m pytest tests -q` (Windows: `.\.venv\Scripts\python.exe -m pytest tests -q`).
+To edit the UI, change `frontend/` and run `python scripts/sync_frontend.py`. The committed `dist/` is ready to serve. Run frontend request checks with `node tests/frontend_requests.cjs` (Node is needed only for this check). Run Python tests with `.venv/bin/python -m pytest tests -q` (Windows: `.\.venv\Scripts\python.exe -m pytest tests -q`).
 
 ## Source and operational limits
 
@@ -77,3 +79,7 @@ NSE, Yahoo and Screener can change their pages or reject requests. Stale fallbac
 The full reviewed eight-module dossier is KPIT. Other tickers receive live discovery, supported financial extraction and optional cited model analysis, not a promise of a complete automatically audited dossier. Model citations are checked for exact text/page/hash membership; this does not prove semantic correctness. Governance coverage is partial. DSO is not misrepresented as the full cash-conversion cycle. See `docs/PROMPT_REVIEW.md` for the complete scope map.
 
 This is a single-user app. Browser notes stay on the device; optional API storage is single-user. Before internet-hosting the backend, set `FINN_API_TOKEN`, restrict `FINN_CORS_ORIGINS`, use HTTPS and add appropriate operational controls. No brokerage connection or trade execution exists.
+
+## Final validation pass
+
+47 Python checks and 5 frontend request checks pass. Model-adapter tests use a mock provider and verify schema rejection, cache reuse, invalidation when evidence changes, and usage-based cost accounting; these are not a claim of a real provider test. A fresh empty-cache PIDILITIND run retrieved 64 price bars, six table sections and 12 primary documents including four transcripts in 122.7 seconds. Seven source downloads failed; no complete annual report or supported primary financial grid was retrieved for that run. See `docs/PIDILITIND_LIVE_CHECK.json`. The UI waits longer for cold company discovery, recovers after timeouts, and prevents overlapping requests from leaving controls stuck.

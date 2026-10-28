@@ -16,3 +16,11 @@ This is an honest summary of work performed in this conversation on 27 October 2
 - Added automated checks for arithmetic, timestamps, source validation, unsupported layouts, settings, authentication, pin APIs and snapshot integrity.
 
 No paid LLM inference was used. Model-generated analysis and paid web-enrichment integrations remain unverified with real credentials. Setup instructions and submission materials explain those limits.
+
+## Final readiness pass, 27–28 October 2026
+
+Confirmed user Windows startup on Python 3.13.15. Added `start.cmd`, longer cold-source request budgets, readable timeout recovery, overlapping-request protection, visibility of model results alongside the reviewed KPIT dossier, and restored bottom navigation in desktop phone preview. Standalone HTML is now regenerated from the editable frontend.
+
+47 Python tests and 5 frontend request checks pass; model tests use an HTTP mock and do not validate a real paid provider. Empty-cache PIDILITIND retrieval returned 64 price bars, six table sections and 12 documents including four transcripts; seven sources failed, no complete annual report was fetched, and no supported primary financial table was extracted. These limits are retained in the live-check JSON.
+
+The saved-data site was deployed privately on 28 October 2026. The Python backend remains local. No evaluator invitations or submission email were sent. The covering-email subject was corrected to the exact required text.

@@ -1,0 +1,53 @@
+{
+  "symbol": "PIDILITIND",
+  "elapsed_seconds": 122.7,
+  "company_status": "hit",
+  "price_status": "fresh",
+  "price_bars": 64,
+  "coverage": {
+    "downloaded": 12,
+    "discovered": 19,
+    "transcripts": 4,
+    "annual_reports": 0,
+    "notices": 0
+  },
+  "source_failures": [
+    {
+      "name": "Results 2025-08-06",
+      "url": "https://nsearchives.nseindia.com/corporate/Nisha_06082025174826_SEIntimationUnauditedFinancialResultsJune2025.pdf",
+      "error": "ReadTimeout"
+    },
+    {
+      "name": "Annual Report 2021-07-15",
+      "url": "https://nsearchives.nseindia.com/corporate/PIDILITIND_15072021192717_SEIntimationAGMandARRevised1572021.pdf",
+      "error": "ReadTimeout"
+    },
+    {
+      "name": "Annual Report 2018-08-03",
+      "url": "https://nsearchives.nseindia.com/corporate/SEIntimationAnnualReport201718_03082018114415_057.zip",
+      "error": "ReadTimeout"
+    },
+    {
+      "name": "Annual Report 2017-08-02",
+      "url": "https://nsearchives.nseindia.com/corporate/SEAnnualReport2017_02082017181441_548.zip",
+      "error": "ValueError"
+    },
+    {
+      "name": "Annual Report 2026",
+      "url": "https://www.bseindia.com/xml-data/corpfiling/AttachHis/84c374a7-10a3-4a3b-8693-cc7e75a0a6b8.pdf",
+      "error": "HTTPStatusError"
+    },
+    {
+      "name": "Annual Report 2025",
+      "url": "https://www.bseindia.com/xml-data/corpfiling/AttachHis/344b4889-6fa9-4a1f-adc3-d52ce16690b4.pdf",
+      "error": "HTTPStatusError"
+    },
+    {
+      "name": "Annual Report 2024",
+      "url": "https://www.bseindia.com/xml-data/corpfiling/AttachHis/7cc75aa9-8e98-42f3-9d45-a61e93c5574e.pdf",
+      "error": "HTTPStatusError"
+    }
+  ],
+  "financials_extracted": false,
+  "analysis_status": "not_requested"
+}

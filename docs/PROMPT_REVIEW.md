@@ -26,7 +26,7 @@ Reviewed the complete master engineering prompt and both ENAM challenge PDFs. Th
 | Cost / latency / cache | Actual model usage ledger; PDF/HTML hashes; inference cache includes model, prompt, schema and evidence. Unknown pricing disclosed. No fabricated benchmark or sub-300ms cold-start claim. |
 | Startup / deployment | Python launchers and Docker configuration; private static hosted demo. Live Python backend must run locally or on a suitable server. |
 | Recommended frontend stack | Intentionally uses small dependency-free JavaScript/CSS with SVG charts rather than Next/shadcn. Python uses sqlite3 rather than SQLAlchemy. These reduce setup and build failure points; they are deviations from recommendations, not hidden substitutions. |
-| Submission | Source archive, documentation, email draft and build summary supplied. Source is uploaded to Prince-svrn/FINN. Evaluator access, a live demo link, actual conversation export and sending the email remain handoff items. |
+| Submission | Source archive, documentation, email draft and build summary supplied. Source is uploaded to Prince-svrn/FINN. A hosted saved-data demo is now deployed privately. Evaluator access, actual conversation export and sending the email remain handoff items. |
 
 ## Corrections to the prompt
 

@@ -6,3 +6,11 @@
 .bio-box{background:var(--bg);padding:14px 16px;margin-top:16px;border:1px solid var(--border);border-radius:5px}.bio-box>div{margin-bottom:9px}.bio-box p{font-size:11px;color:var(--muted);margin:2px 0}.bio-box .label{font-size:8px;letter-spacing:1px}.bar-chart{gap:12px}.chart-label{font-size:8px!important}
 
 .cash-chart{margin:24px 0}.cash-chart-row{display:grid;grid-template-columns:42px 1fr;gap:12px;margin:14px 0;font-size:11px}.cash-bar{height:23px;background:var(--green);color:#081610;margin:3px 0;min-width:130px;padding:4px 7px;white-space:nowrap;font-variant-numeric:tabular-nums}.cash-bar.earnings{background:#9aa7b7;color:#101723}.table-scroll{overflow-x:auto}
+
+/* Keep navigation available in the desktop phone preview too. */
+.compact .workspace{padding-bottom:104px}
+.compact .bottom-nav{display:flex;position:fixed;z-index:30;bottom:0;left:50%;right:auto;transform:translateX(-50%);width:min(100%,500px);background:var(--bg);border-top:1px solid var(--border);padding:9px 8px;justify-content:space-around}
+.compact .bottom-nav button{display:flex;flex-direction:column;align-items:center;gap:5px;font-size:10px;color:var(--muted);min-width:65px;min-height:42px}
+.compact .bottom-nav button.active{color:var(--green2)}
+.compact .metric-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.compact .two-grid{grid-template-columns:1fr}
