@@ -46,3 +46,19 @@ Changed Gemini requests to JSON-object mode with the schema in the prompt. Local
 After replacing backend/llm_router.py and restarting, the owner supplied SONACOMS screenshots showing three Business findings, one Guidance finding, two Bull findings, one Bear finding and one Governance finding, each with a source badge. All visible badges refer to the transcript dated 2026-07-30. The model-assisted audit reports no comparable commitments. This demonstrates the live model-to-interface path on the owner's laptop; it does not establish cross-quarter completeness or independent semantic correctness.
 
 Review observations: the order-book claim says "240 billion" without a currency; confirm and retain the source currency before relying on that number. The Governance finding is explicitly management's account of its own disclosure practice, not independent evidence of sound governance. The multi-quarter audit remains demonstrated by the separately reviewed KPIT case. No full raw model response or cited PDF pages from this particular run were supplied for independent claim verification.
+
+
+## 29 October 2026 — account handover and snapshot recovery
+
+Reviewed the supplied conversation, master prompt, challenge PDFs and source archive.
+The separate uploaded llm_router.py contains a newer Gemini JSON-mode fix than the archive; merged it and updated the adapter contract test.
+
+Static startup now renders the snapshot before optional local/configured backend discovery. Static hosts do not probe nonexistent API routes. Empty hosted connection origins produce an inline explanation. Connection errors now display inside the modal instead of behind it. Snapshot recovery restores the original dataset, clears live research, closes the dialog and returns to the digest. Session storage failures no longer abort startup; older browsers receive a timeout-signal fallback. Hosted and standalone builds use the same startup code. Shell cache version advanced to v2.
+
+Validation in this session: 60 Python tests passed; six existing frontend checks passed; added static startup, blocked-storage, empty-origin, snapshot-reset and timeout-fallback regression checks passed. Browser checked the edited compact layout: connection explanation, saved-mode recovery, bottom navigation, and KPIT audit. This is desktop compact-layout verification, not a physical-phone test.
+
+The old public page loaded and its compact Research navigation worked in this browser. The precise cause of the reported phone failure is not proven. The old hosting project is not accessible from this account. GitHub installation was confirmed but repository tools were not exposed in the active session; no repository push or public deployment was performed. Live Gemini success is reported in the supplied prior conversation; no fresh live inference was performed here.
+
+
+## Repository reconciliation and replacement hosting
+GitHub access is now verified. Main ac4067677ab0173659b8491dfe162970679b70bb contains one newer commit than the original ZIP. Preserved all remote changes, including the working model default and research-format tests. Reran 64 Python tests and both frontend suites successfully. Prepared a replacement owner-private Site under the current account because the old Site is not editable here. Public access requires a separate audience decision.

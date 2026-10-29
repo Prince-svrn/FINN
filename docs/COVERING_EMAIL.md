@@ -1,4 +1,4 @@
-DRAFT — do not send until repository access is enabled and the actual AI build-history link below is filled. The hosted saved-data demo is public.
+DRAFT — do not send until repository access is enabled and the actual AI build-history link below is filled. The replacement demo starts private; enable reviewer access before sending.
 
 To: assessment@enam.com
 Subject: ENAM - IIT screening - 2027
@@ -7,9 +7,10 @@ Hello ENAM team,
 
 Please find my submission for the AI Engineer Build Challenge: FINN, a mobile-first tool for filtering portfolio disclosures and reviewing company fundamentals against primary evidence.
 
-Demo: https://finn-investment-agent-prince.safegrape512.chatgpt.site
+Demo: https://finn-investment-agent.jazzyibex1024.chatgpt.site
 GitHub: https://github.com/Prince-svrn/FINN
-AI build conversation: [insert actual conversation export or share link]
+AI build conversation: https://chatgpt.com/share/6ae274da-ad54-83ec-8cae-b58a55c1906a?ogimg=plain
+Continuation build history: [attach this conversation export or insert its share link]
 
 The prototype includes a windowed disclosure digest, configurable price/volume alerts, sourced results and leadership cards, a four-quarter KPIT say–do audit, three-year cash conversion, and a thesis pinboard with export. The backend also accepts tickers outside the sample portfolio; I checked the ingestion and primary financial extraction with POLYCAB.
 
