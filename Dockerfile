@@ -6,4 +6,4 @@ COPY . .
 RUN useradd -m finn && mkdir -p runtime && chown -R finn:finn /app
 USER finn
 EXPOSE 8000
-CMD ["python","-m","uvicorn","backend.app:app","--host","0.0.0.0","--port","8000"]
+CMD ["sh","-c","exec python -m uvicorn backend.app:app --host 0.0.0.0 --port ${PORT:-8000}"]

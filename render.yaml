@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: finn-live-research
+    runtime: docker
+    plan: free
+    branch: main
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /healthz
+    envVars:
+      - key: FINN_LLM_API_KEY
+        sync: false
+      - key: FINN_API_TOKEN
+        generateValue: true
+      - key: FINN_LLM_BASE_URL
+        value: https://generativelanguage.googleapis.com/v1beta/openai
+      - key: FINN_MODEL_T2
+        value: gemini-3.5-flash-lite
+      - key: FINN_MODEL_T1
+        value: ""
+      - key: FINN_POLL_INTERVAL_SECONDS
+        value: "0"
+      - key: FINN_CORS_ORIGINS
+        value: https://finn-investment-agent.jazzyibex1024.chatgpt.site

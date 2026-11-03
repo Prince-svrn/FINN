@@ -62,3 +62,8 @@ The old public page loaded and its compact Research navigation worked in this br
 
 ## Repository reconciliation and replacement hosting
 GitHub access is now verified. Main ac4067677ab0173659b8491dfe162970679b70bb contains one newer commit than the original ZIP. Preserved all remote changes, including the working model default and research-format tests. Reran 64 Python tests and both frontend suites successfully. Prepared a replacement owner-private Site under the current account because the old Site is not editable here. Public access requires a separate audience decision.
+
+
+## 3 November 2026 — public demo and Python hosting preparation
+
+Replacement Site made public following explicit owner approval. Added Render Free Blueprint, platform PORT support, a public readiness endpoint without configuration details, and a same-origin backend marker served only by Python. The static demo keeps saved-mode startup and avoids API 404s. The research API remains token-protected; Gemini credentials stay server-side. Added a regression proving readiness/frontend remain public while protected API requests reject missing tokens. 65 Python tests and both frontend suites pass. Render deployment and hosted Gemini inference still require the connected account and secret; neither is claimed complete.

@@ -8,7 +8,7 @@ from datetime import datetime,timedelta,timezone
 from pathlib import Path
 from fastapi import FastAPI,HTTPException,UploadFile,File,Query,Request
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import PlainTextResponse
+from fastapi.responses import PlainTextResponse, HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from backend import store
 from backend.domain import resolve_symbol,eod_metrics,match_filing,CATEGORIES
@@ -179,5 +179,16 @@ def memo():
     lines=['# FINN — Investment Committee working note','',f'Created: {datetime.now(timezone.utc).isoformat()}','', 'Pinned evidence, not an investment recommendation.','']
     for p in pins():lines.extend([f'## {p["symbol"]}: {p["title"]}',p['note'],p['source_url'],''])
     return '\n'.join(lines)
+
+@app.get('/healthz')
+def hosting_health():
+    # Hosting readiness only: no credentials, model configuration or database contents.
+    return {'status':'ok'}
+
+@app.get('/',response_class=HTMLResponse)
+def frontend_home():
+    # Lets the same UI discover its backend on any domain without probing static hosts.
+    html=(ROOT/'dist/index.html').read_text()
+    return html.replace('<head>', '<head><meta name="finn-backend" content="same-origin">', 1)
 
 app.mount('/',StaticFiles(directory=ROOT/'dist',html=True),name='frontend')

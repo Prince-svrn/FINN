@@ -44,3 +44,12 @@ def test_bad_upload_and_api_auth(client,monkeypatch):
  monkeypatch.setenv('FINN_API_TOKEN','local-test-token')
  assert client.get('/api/health').status_code==401
  assert client.get('/api/health',headers={'Authorization':'Bearer local-test-token'}).status_code==200
+
+def test_hosting_readiness_public_but_api_still_protected(client,monkeypatch):
+ monkeypatch.setenv('FINN_API_TOKEN','reviewer-secret')
+ assert client.get('/healthz').json()=={'status':'ok'}
+ assert client.get('/api/health').status_code==401
+ html=client.get('/').text
+ assert '<meta name="finn-backend" content="same-origin">' in html
+ assert 'reviewer-secret' not in html
+ assert 'finn-backend' not in ( __import__('pathlib').Path(__file__).parents[1]/'dist/index.html').read_text()
