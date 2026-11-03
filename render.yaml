@@ -20,4 +20,4 @@ services:
       - key: FINN_POLL_INTERVAL_SECONDS
         value: "0"
       - key: FINN_CORS_ORIGINS
-        value: https://finn-investment-agent.jazzyibex1024.chatgpt.site
+        value: https://finn-investment-agent.explorewithme012.chatgpt.site

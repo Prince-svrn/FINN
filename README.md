@@ -10,7 +10,7 @@ A mobile-first research prototype for the ENAM AI Engineer Build Challenge. FINN
 
 Double-click `dist/FINN_Demo.html` in Chrome or Edge. It contains the saved data and complete interface in one file. Live refresh and arbitrary-ticker retrieval require the backend below.
 
-**Hosted demo:** [https://finn-investment-agent.jazzyibex1024.chatgpt.site](https://finn-investment-agent.jazzyibex1024.chatgpt.site) — deployed on 28 October 2026 and made public with the owner's permission. It serves the saved-data prototype; live retrieval and model synthesis require the local Python backend. The source repository is [Prince-svrn/FINN](https://github.com/Prince-svrn/FINN). Download the latest source from GitHub for the updated Gemini setup; older downloads do not update automatically.
+**Hosted demo:** [https://finn-investment-agent.explorewithme012.chatgpt.site](https://finn-investment-agent.explorewithme012.chatgpt.site) — deployed on 28 October 2026 and made public with the owner's permission. It serves the saved-data prototype; live retrieval and model synthesis require the local Python backend. The source repository is [Prince-svrn/FINN](https://github.com/Prince-svrn/FINN). Download the latest source from GitHub for the updated Gemini setup; older downloads do not update automatically.
 
 ## Start on Windows
 

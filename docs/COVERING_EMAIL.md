@@ -7,7 +7,7 @@ Hello ENAM team,
 
 Please find my submission for the AI Engineer Build Challenge: FINN, a mobile-first tool for filtering portfolio disclosures and reviewing company fundamentals against primary evidence.
 
-Demo: https://finn-investment-agent.jazzyibex1024.chatgpt.site
+Demo: https://finn-investment-agent.explorewithme012.chatgpt.site
 GitHub: https://github.com/Prince-svrn/FINN
 AI build conversation: https://chatgpt.com/share/6ae274da-ad54-83ec-8cae-b58a55c1906a?ogimg=plain
 Continuation build history: [attach this conversation export or insert its share link]
